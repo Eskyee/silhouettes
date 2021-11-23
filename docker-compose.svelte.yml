@@ -28,6 +28,8 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     depends_on:
       - svelte
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   nginx-proxy-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion

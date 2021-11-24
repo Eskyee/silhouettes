@@ -3,10 +3,10 @@
 
 	<h2 class="mb">WHO</h2>
 
-	<h3>YOU</h3>
+	<h3>Esky JungleLab</h3>
 	<p>
-		Imagine this is your bio here, as this would be your website. You can share how awesome you are and 
-		what the website visitors here should know about you.
+		Self Taught Developer, JungleLab, BTCPay Contributor, BTCPayJungle, BTCPayLiquid,
+		DJ, Producer, Artist, Ex "BMG" Audio Engineer. With over 20 years experience in underground sound culture,
 	</p>
 
 	<h3>KRIS CONSTABLE</h3>
@@ -28,7 +28,7 @@
 	<h2>WHAT</h2>
 
 	<p>
-		<b>YOUR SITE NAME</b> is a video or live stream website where you can expect to see YOUR CONTENT. <b>YOUR SITE NAME</b>
+		<b>JungleLab</b> is a video or live stream website where you can expect to see YOUR CONTENT. <b>JungleLab</b>
 		is a video platform that uniquely sells tickets and access via NFTs. Upon purchase, viewers will also
 		unlock exclusive digital assets along with access to the film. These NFTs will be released in three
 		separate tiers:
@@ -47,11 +47,11 @@
 
 	<h2>WHEN</h2>
 
-	<p><b>YOUR NEW SITE</b> will be released on January 01, 2022.</p>
+	<p><b>JungleLab</b> will be released on January 01, 2022.</p>
 
 	<h2>WHERE</h2>
 
-	<p><b>YOUR NEW SITE</b> can be accessed worldwide upon release on example.com</p>
+	<p><b>JungleLab</b> can be accessed worldwide upon release on example.com</p>
 
 	<h2>WHY</h2>
 

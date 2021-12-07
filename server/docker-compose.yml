@@ -58,7 +58,7 @@ services:
     depends_on:
       - 'hasura'
     ports:
-      - '3400:3000'
+      - '3400:3400'
     environment:
       HOST: 0.0.0.0
       PORT: 3000

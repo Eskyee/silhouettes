@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  svelte:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/code
+      - static_volume:/silhouettes/static
+    environment:
+      VIRTUAL_HOST: silhouettes.autonomoustech.ca
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: silhouettes.autonomoustech.ca
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    build: docker/nginx
+    restart: always
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - static_volume:/silhouettes/static
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - svelte
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    environment:
+      - DEFAULT_EMAIL=abdullah@autonomoustech.ca
+#      - ACME_CA_URI=https://acme-staging-v02.api.letsencrypt.org/directory
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+    depends_on:
+      - nginx-proxy
+
+volumes:
+  static_volume:
+  certs:
+  html:
+  vhost:

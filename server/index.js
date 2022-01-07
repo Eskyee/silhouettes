@@ -55,7 +55,9 @@ app.get('/cookie', (req, reply) => {
 require('./auth');
 require('./mail');
 require('./payments');
-require('./litecoin');
+
+// commented out cause we don't have litecoin service
+// require('./litecoin');
 
 nfts = [];
 last = undefined;
@@ -139,11 +141,11 @@ register = async (asset) => {
 	let { users } = result.data;
 
 	let { ticket, type } = nfts.find((n) => n.asset === asset);
-  let { name, filename } = artworks[type];
+	let { name, filename } = artworks[type];
 
 	const contract = {
 		entity: { domain: 'silhouettesthemovie.com' },
-    filename,
+		filename,
 		issuer_pubkey: users[0].pubkey,
 		name,
 		precision: 0,
@@ -154,7 +156,7 @@ register = async (asset) => {
 	result = await registry
 		.post({
 			asset_id: asset,
-			contract,
+			contract
 		})
 		.json();
 
@@ -164,11 +166,11 @@ register = async (asset) => {
 app.get('/register/all', async (req, res) => {
 	nfts = await getNfts();
 
-  try {
-    for(let i = 0; i < nfts.length; i++) {
-      await new Promise((r) => setTimeout(r, 2000));
-      await register(nfts[i].asset);
-    } 
+	try {
+		for (let i = 0; i < nfts.length; i++) {
+			await new Promise((r) => setTimeout(r, 2000));
+			await register(nfts[i].asset);
+		}
 
 		res.send(true);
 	} catch (e) {
